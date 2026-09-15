@@ -11,7 +11,7 @@
 html,
 body {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -30,6 +30,7 @@ body {
   position: fixed;
   inset: 0;
   z-index: -5;
+
   background:
     radial-gradient(
       circle at 50% 40%,
@@ -54,8 +55,11 @@ body {
   inset: -50%;
   z-index: 50;
   pointer-events: none;
+
   opacity: 0.035;
+
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+
   animation: grainMove 12s steps(8) infinite;
 }
 
@@ -94,11 +98,17 @@ body {
 
 .star {
   position: absolute;
+
   width: 2px;
   height: 2px;
+
   border-radius: 50%;
+
   background: rgba(255, 220, 235, 0.7);
-  box-shadow: 0 0 8px rgba(255, 150, 190, 0.8);
+
+  box-shadow:
+    0 0 8px rgba(255, 150, 190, 0.8);
+
   animation: starFloat 10s ease-in-out infinite;
 }
 
@@ -123,6 +133,7 @@ body {
   position: fixed;
   inset: 0;
   z-index: 2;
+
   pointer-events: none;
   overflow: hidden;
 }
@@ -130,10 +141,13 @@ body {
 .floating-heart {
   position: absolute;
   bottom: -30px;
+
   color: rgba(255, 135, 175, 0.45);
+
   text-shadow:
     0 0 10px rgba(255, 60, 130, 0.4),
     0 0 25px rgba(255, 60, 130, 0.2);
+
   animation: floatHeart 20s linear forwards;
 }
 
@@ -148,7 +162,10 @@ body {
   }
 
   50% {
-    transform: translateY(-45vh) translateX(20px) scale(1);
+    transform:
+      translateY(-45vh)
+      translateX(20px)
+      scale(1);
   }
 
   80% {
@@ -157,7 +174,11 @@ body {
 
   100% {
     opacity: 0;
-    transform: translateY(-110vh) translateX(-30px) scale(0.8);
+
+    transform:
+      translateY(-110vh)
+      translateX(-30px)
+      scale(0.8);
   }
 }
 
@@ -167,26 +188,35 @@ body {
 
 .progress {
   position: fixed;
+
   top: 0;
   left: 0;
+
   width: 100%;
   height: 2px;
+
   z-index: 100;
+
   background: rgba(255, 255, 255, 0.08);
 }
 
 .progress span {
   display: block;
+
   width: 0;
   height: 100%;
+
   background: linear-gradient(
     90deg,
     #ff5c91,
     #ffc2d6
   );
+
   box-shadow:
     0 0 10px rgba(255, 80, 140, 0.7);
-  transition: width 2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  transition:
+    width 2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ================================
@@ -195,8 +225,10 @@ body {
 
 main {
   position: relative;
+
   width: 100%;
   height: 100vh;
+
   overflow: hidden;
 }
 
@@ -253,16 +285,21 @@ main {
 
 .eyebrow {
   font-size: 9px;
+
   letter-spacing: 0.42em;
   text-transform: uppercase;
+
   color: rgba(255, 190, 210, 0.65);
+
   margin-bottom: 24px;
 }
 
 .tiny {
   font-size: 10px;
+
   letter-spacing: 0.2em;
   text-transform: uppercase;
+
   color: rgba(255, 220, 230, 0.55);
 }
 
@@ -275,17 +312,25 @@ h3 {
 
 h1 {
   font-size: clamp(48px, 14vw, 100px);
+
   line-height: 0.85;
+
   text-align: center;
+
   letter-spacing: -0.04em;
 }
 
 h1 strong {
   display: block;
+
   font-family: "Great Vibes", cursive;
+
   font-weight: 400;
+
   font-size: 1.2em;
+
   color: #ff9fbd;
+
   text-shadow:
     0 0 20px rgba(255, 90, 140, 0.35),
     0 0 60px rgba(255, 70, 130, 0.2);
@@ -293,7 +338,9 @@ h1 strong {
 
 h2 {
   font-size: clamp(42px, 11vw, 75px);
+
   line-height: 0.95;
+
   letter-spacing: -0.035em;
 }
 
@@ -304,9 +351,13 @@ h2 span {
 
 h2 em {
   display: block;
+
   color: #ff9fbd;
+
   font-family: "Great Vibes", cursive;
+
   font-size: 1.2em;
+
   font-style: normal;
   font-weight: 400;
 }
@@ -325,13 +376,20 @@ h2 em {
 }
 
 #intro.active .eyebrow {
-  animation: slowReveal 3s ease 0.5s forwards;
+  animation:
+    slowReveal
+    3s
+    ease
+    0.5s
+    forwards;
 }
 
 .intro-glow {
   position: absolute;
+
   width: 280px;
   height: 280px;
+
   border-radius: 50%;
 
   background:
@@ -342,7 +400,12 @@ h2 em {
     );
 
   filter: blur(10px);
-  animation: introGlow 10s ease-in-out infinite;
+
+  animation:
+    introGlow
+    10s
+    ease-in-out
+    infinite;
 }
 
 @keyframes introGlow {
@@ -364,6 +427,7 @@ h2 em {
 
 .giant-heart {
   position: relative;
+
   width: 150px;
   height: 150px;
 
@@ -379,12 +443,17 @@ h2 em {
   z-index: 2;
 
   color: #ff6f9e;
+
   font-size: 115px;
   line-height: 1;
 
   transform-origin: center;
 
-  animation: heartbeat 5s ease-in-out infinite;
+  animation:
+    heartbeat
+    5s
+    ease-in-out
+    infinite;
 
   text-shadow:
     0 0 15px rgba(255, 60, 130, 0.7),
@@ -395,15 +464,23 @@ h2 em {
 .giant-heart::before,
 .giant-heart::after {
   content: "";
+
   position: absolute;
 
   width: 130px;
   height: 130px;
 
-  border: 1px solid rgba(255, 120, 160, 0.35);
+  border:
+    1px solid
+    rgba(255, 120, 160, 0.35);
+
   border-radius: 50%;
 
-  animation: heartWave 10s ease-out infinite;
+  animation:
+    heartWave
+    10s
+    ease-out
+    infinite;
 }
 
 .giant-heart::after {
@@ -438,7 +515,7 @@ h2 em {
 }
 
 /* ================================
-   INTRO TEXT
+   INTRO REVEAL
 ================================ */
 
 #intro .tiny,
@@ -449,37 +526,62 @@ h2 em {
 }
 
 #intro.active .tiny {
-  animation: slowReveal 3s ease 1s forwards;
+  animation:
+    slowReveal
+    3s
+    ease
+    1s
+    forwards;
 }
 
 #intro.active h1 {
-  animation: slowReveal 3.5s ease 1.4s forwards;
+  animation:
+    slowReveal
+    3.5s
+    ease
+    1.4s
+    forwards;
 }
 
 #intro.active .intro-copy {
-  animation: slowReveal 3s ease 2s forwards;
+  animation:
+    slowReveal
+    3s
+    ease
+    2s
+    forwards;
 }
 
 #intro.active .enter-btn {
-  animation: slowReveal 3s ease 2.5s forwards;
+  animation:
+    slowReveal
+    3s
+    ease
+    2.5s
+    forwards;
 }
 
 @keyframes slowReveal {
   from {
     opacity: 0;
+
     transform: translateY(18px);
+
     filter: blur(6px);
   }
 
   to {
     opacity: 1;
+
     transform: translateY(0);
+
     filter: blur(0);
   }
 }
 
 .intro-copy {
   max-width: 310px;
+
   margin-top: 5px;
 
   font-size: 13px;
@@ -500,22 +602,32 @@ button {
 .continue-btn {
   border: none;
   background: none;
+
   color: #fff;
+
   cursor: pointer;
 }
 
+/* OPEN BUTTON */
+
 .enter-btn {
-  margin-top: 20px;
+  margin-top: 15px;
 
   padding: 14px 26px;
 
-  border: 1px solid rgba(255, 170, 195, 0.35);
+  border:
+    1px solid
+    rgba(255, 170, 195, 0.35);
+
   border-radius: 100px;
 
-  background: rgba(255, 255, 255, 0.035);
+  background:
+    rgba(255, 255, 255, 0.035);
 
   font-size: 10px;
+
   letter-spacing: 0.25em;
+
   text-transform: uppercase;
 
   transition:
@@ -526,44 +638,87 @@ button {
 
 .enter-btn b {
   margin-left: 14px;
+
   font-size: 15px;
   font-weight: 300;
 }
 
 .enter-btn:hover {
-  background: rgba(255, 100, 150, 0.1);
-  border-color: rgba(255, 170, 195, 0.7);
+  background:
+    rgba(255, 100, 150, 0.1);
+
+  border-color:
+    rgba(255, 170, 195, 0.7);
+
   transform: translateY(-3px);
 }
 
+/* CONTINUE BUTTON */
+
 .continue-btn {
   position: absolute;
-  bottom: 28px;
+
+  bottom: 70px;
+
+  z-index: 20;
 
   display: flex;
+
   align-items: center;
+
   gap: 13px;
 
+  padding: 12px 18px;
+
   font-size: 9px;
+
   letter-spacing: 0.3em;
+
   text-transform: uppercase;
 
-  color: rgba(255, 220, 230, 0.6);
+  color: rgba(255, 220, 230, 0.75);
+
+  background:
+    rgba(8, 3, 8, 0.35);
+
+  border:
+    1px solid
+    rgba(255, 180, 205, 0.15);
+
+  border-radius: 100px;
+
+  backdrop-filter: blur(8px);
+
+  -webkit-backdrop-filter: blur(8px);
 
   transition:
     color 0.8s ease,
-    transform 0.8s ease;
+    transform 0.8s ease,
+    background 0.8s ease,
+    border-color 0.8s ease;
 }
 
 .continue-btn i {
   font-style: normal;
+
   font-size: 16px;
 
-  animation: gentleArrow 4s ease-in-out infinite;
+  animation:
+    gentleArrow
+    4s
+    ease-in-out
+    infinite;
 }
 
 .continue-btn:hover {
   color: #fff;
+
+  background:
+    rgba(255, 100, 150, 0.1);
+
+  border-color:
+    rgba(255, 180, 205, 0.35);
+
   transform: translateY(-4px);
 }
 
@@ -588,12 +743,15 @@ button {
   width: 100%;
   max-width: 650px;
 
-  max-height: calc(100vh - 140px);
+  max-height: calc(100vh - 160px);
 
   overflow-y: auto;
   overflow-x: hidden;
 
-  padding: 40px 5px 80px;
+  padding:
+    40px
+    5px
+    100px;
 
   scrollbar-width: none;
 
@@ -616,13 +774,17 @@ button {
 @keyframes contentReveal {
   from {
     opacity: 0;
+
     transform: translateY(35px);
+
     filter: blur(8px);
   }
 
   to {
     opacity: 1;
+
     transform: translateY(0);
+
     filter: blur(0);
   }
 }
@@ -642,9 +804,11 @@ button {
   right: 25px;
 
   font-family: "Cormorant Garamond", serif;
+
   font-size: 14px;
 
   color: rgba(255, 170, 195, 0.45);
+
   letter-spacing: 0.2em;
 }
 
@@ -654,16 +818,19 @@ button {
 
   margin: 30px 0;
 
-  background: rgba(255, 150, 180, 0.55);
+  background:
+    rgba(255, 150, 180, 0.55);
 }
 
 .memory-text {
   max-width: 520px;
 
   font-size: 14px;
+
   line-height: 2;
 
-  color: rgba(255, 230, 238, 0.65);
+  color:
+    rgba(255, 230, 238, 0.65);
 }
 
 /* ================================
@@ -676,40 +843,54 @@ button {
 
 .love-item {
   display: grid;
+
   grid-template-columns: 40px 1fr;
 
   gap: 14px;
 
   padding: 22px 0;
 
-  border-bottom: 1px solid rgba(255, 180, 200, 0.1);
+  border-bottom:
+    1px solid
+    rgba(255, 180, 200, 0.1);
 }
 
 .love-item:first-child {
-  border-top: 1px solid rgba(255, 180, 200, 0.1);
+  border-top:
+    1px solid
+    rgba(255, 180, 200, 0.1);
 }
 
 .love-item > span {
   font-size: 9px;
+
   letter-spacing: 0.2em;
-  color: rgba(255, 160, 190, 0.5);
+
+  color:
+    rgba(255, 160, 190, 0.5);
+
   padding-top: 5px;
 }
 
 .love-item h3 {
   font-size: 24px;
+
   color: #ffd6e3;
+
   margin-bottom: 7px;
 }
 
 .love-item p {
   font-size: 12px;
+
   line-height: 1.8;
-  color: rgba(255, 225, 235, 0.55);
+
+  color:
+    rgba(255, 225, 235, 0.55);
 }
 
 /* ================================
-   PHOTO SCREENS
+   PHOTO
 ================================ */
 
 .photo-screen {
@@ -733,7 +914,12 @@ button {
 
   transform: scale(1.08);
 
-  animation: photoSlowZoom 18s ease-in-out infinite alternate;
+  animation:
+    photoSlowZoom
+    18s
+    ease-in-out
+    infinite
+    alternate;
 }
 
 .photo-shade {
@@ -764,7 +950,8 @@ button {
 
   left: 25px;
   right: 25px;
-  bottom: 105px;
+
+  bottom: 145px;
 
   z-index: 2;
 
@@ -783,13 +970,17 @@ button {
 @keyframes captionReveal {
   from {
     opacity: 0;
+
     transform: translateY(40px);
+
     filter: blur(8px);
   }
 
   to {
     opacity: 1;
+
     transform: translateY(0);
+
     filter: blur(0);
   }
 }
@@ -804,9 +995,11 @@ button {
   margin-bottom: 18px;
 
   font-size: 8px;
+
   letter-spacing: 0.35em;
 
-  color: rgba(255, 210, 225, 0.65);
+  color:
+    rgba(255, 210, 225, 0.65);
 }
 
 /* ================================
@@ -839,7 +1032,10 @@ button {
   width: min(62vw, 260px);
   height: min(62vw, 260px);
 
-  margin: 10px auto 30px;
+  margin:
+    10px
+    auto
+    30px;
 }
 
 .album img {
@@ -853,13 +1049,19 @@ button {
 
   border-radius: 50%;
 
-  border: 1px solid rgba(255, 180, 205, 0.25);
+  border:
+    1px solid
+    rgba(255, 180, 205, 0.25);
 
   box-shadow:
     0 0 30px rgba(255, 60, 130, 0.2),
     0 0 90px rgba(255, 60, 130, 0.1);
 
-  animation: albumFloat 8s ease-in-out infinite;
+  animation:
+    albumFloat
+    8s
+    ease-in-out
+    infinite;
 }
 
 .album-glow {
@@ -877,7 +1079,11 @@ button {
 
   filter: blur(15px);
 
-  animation: albumGlow 9s ease-in-out infinite;
+  animation:
+    albumGlow
+    9s
+    ease-in-out
+    infinite;
 }
 
 @keyframes albumFloat {
@@ -906,42 +1112,56 @@ button {
 
 .music-label {
   font-size: 8px;
+
   letter-spacing: 0.3em;
 
-  color: rgba(255, 190, 210, 0.5);
+  color:
+    rgba(255, 190, 210, 0.5);
 
   margin-bottom: 15px;
 }
 
 .music-content h2 span {
   font-family: "Great Vibes", cursive;
+
   font-size: clamp(55px, 15vw, 85px);
+
   color: #ff9fbd;
 }
 
 .music-copy {
   max-width: 280px;
 
-  margin: 10px auto 25px;
+  margin:
+    10px
+    auto
+    25px;
 
   font-size: 11px;
+
   line-height: 1.8;
 
-  color: rgba(255, 225, 235, 0.55);
+  color:
+    rgba(255, 225, 235, 0.55);
 }
 
 .music-player {
   display: flex;
+
   align-items: center;
 
   width: min(90vw, 390px);
 
   padding: 14px 16px;
 
-  border: 1px solid rgba(255, 180, 205, 0.15);
+  border:
+    1px solid
+    rgba(255, 180, 205, 0.15);
+
   border-radius: 18px;
 
-  background: rgba(255, 255, 255, 0.035);
+  background:
+    rgba(255, 255, 255, 0.035);
 
   backdrop-filter: blur(15px);
 
@@ -953,12 +1173,14 @@ button {
   height: 40px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
   border-radius: 50%;
 
-  background: rgba(255, 100, 150, 0.1);
+  background:
+    rgba(255, 100, 150, 0.1);
 
   color: #ff9fbd;
 
@@ -975,6 +1197,7 @@ button {
   display: block;
 
   font-family: "Cormorant Garamond", serif;
+
   font-size: 20px;
 
   font-weight: 400;
@@ -986,19 +1209,25 @@ button {
   margin-top: 2px;
 
   font-size: 8px;
+
   letter-spacing: 0.1em;
 
-  color: rgba(255, 220, 230, 0.45);
+  color:
+    rgba(255, 220, 230, 0.45);
 }
 
 .play-btn {
   width: 42px;
   height: 42px;
 
-  border: 1px solid rgba(255, 170, 195, 0.25);
+  border:
+    1px solid
+    rgba(255, 170, 195, 0.25);
+
   border-radius: 50%;
 
-  background: rgba(255, 100, 150, 0.08);
+  background:
+    rgba(255, 100, 150, 0.08);
 
   color: #fff;
 
@@ -1011,7 +1240,9 @@ button {
 
 .play-btn:hover {
   transform: scale(1.08);
-  background: rgba(255, 100, 150, 0.2);
+
+  background:
+    rgba(255, 100, 150, 0.2);
 }
 
 .music-playing .album img {
@@ -1051,7 +1282,11 @@ button {
 
   filter: blur(15px);
 
-  animation: letterGlow 12s ease-in-out infinite;
+  animation:
+    letterGlow
+    12s
+    ease-in-out
+    infinite;
 }
 
 @keyframes letterGlow {
@@ -1082,7 +1317,8 @@ button {
 
   line-height: 1.55;
 
-  color: rgba(255, 235, 242, 0.8);
+  color:
+    rgba(255, 235, 242, 0.8);
 }
 
 .signature {
@@ -1114,6 +1350,7 @@ button {
 .final-photo {
   position: absolute;
   inset: 0;
+
   overflow: hidden;
 }
 
@@ -1125,7 +1362,12 @@ button {
 
   transform: scale(1.08);
 
-  animation: finalPhotoZoom 25s ease-in-out infinite alternate;
+  animation:
+    finalPhotoZoom
+    25s
+    ease-in-out
+    infinite
+    alternate;
 }
 
 .final-overlay {
@@ -1172,13 +1414,17 @@ button {
 @keyframes finalReveal {
   from {
     opacity: 0;
+
     transform: translateY(45px);
+
     filter: blur(10px);
   }
 
   to {
     opacity: 1;
+
     transform: translateY(0);
+
     filter: blur(0);
   }
 }
@@ -1194,7 +1440,8 @@ button {
 
   font-size: 22px;
 
-  color: rgba(255, 230, 238, 0.75);
+  color:
+    rgba(255, 230, 238, 0.75);
 }
 
 .final-content > p span {
@@ -1220,7 +1467,11 @@ button {
     0 0 20px rgba(255, 70, 130, 0.7),
     0 0 60px rgba(255, 70, 130, 0.3);
 
-  animation: finalHeartbeat 5s ease-in-out infinite;
+  animation:
+    finalHeartbeat
+    5s
+    ease-in-out
+    infinite;
 }
 
 @keyframes finalHeartbeat {
@@ -1252,11 +1503,11 @@ button {
   .photo-caption {
     left: 8%;
     right: 8%;
-    bottom: 12%;
+    bottom: 160px;
   }
 
   .continue-btn {
-    bottom: 45px;
+    bottom: 75px;
   }
 
   .memory-text {
@@ -1274,8 +1525,10 @@ button {
 
 @media (max-width: 480px) {
   .screen {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding:
+      50px
+      20px
+      120px;
   }
 
   .giant-heart {
@@ -1294,18 +1547,34 @@ button {
   }
 
   .scroll-content {
-    max-height: calc(100vh - 120px);
-    padding-top: 30px;
-    padding-bottom: 75px;
+    max-height: calc(100vh - 180px);
+
+    padding:
+      30px
+      5px
+      110px;
+  }
+
+  /* BUTTONS ARE HIGHER ON MOBILE */
+
+  .continue-btn {
+    bottom: 80px;
+
+    padding:
+      13px
+      19px;
+
+    font-size: 8px;
   }
 
   .memory-text {
     font-size: 13px;
+
     line-height: 1.9;
   }
 
   .photo-caption {
-    bottom: 90px;
+    bottom: 155px;
   }
 
   .photo-caption h2 {
@@ -1348,6 +1617,24 @@ button {
 
   .final-content > p {
     font-size: 20px;
+  }
+}
+
+/* ================================
+   VERY SMALL PHONES
+================================ */
+
+@media (max-height: 700px) {
+  .continue-btn {
+    bottom: 55px;
+  }
+
+  .photo-caption {
+    bottom: 125px;
+  }
+
+  .scroll-content {
+    padding-bottom: 90px;
   }
 }
 
