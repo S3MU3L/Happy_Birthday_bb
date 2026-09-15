@@ -1,6 +1,5 @@
 const screens = document.querySelectorAll(".screen");
 const buttons = document.querySelectorAll(".enter-btn, .continue-btn");
-
 const progressBar = document.querySelector(".progress span");
 
 let currentScreen = 0;
@@ -12,38 +11,27 @@ let isAnimating = false;
 
 function goToScreen(index) {
   if (isAnimating) return;
-
-  if (index < 0 || index >= screens.length) {
-    return;
-  }
+  if (index < 0 || index >= screens.length) return;
 
   isAnimating = true;
 
-  /*
-    Give the heart effect time to appear
-    BEFORE changing the screen.
-  */
+  // Gentle heart effect first
+  createHeartBurst(window.innerWidth / 2, window.innerHeight / 2, 8);
 
-  createHeartBurst(window.innerWidth / 2, window.innerHeight / 2, 18);
-
+  // Give the effect time to breathe
   setTimeout(() => {
     screens.forEach((screen, i) => {
       screen.classList.toggle("active", i === index);
     });
 
     currentScreen = index;
-
     updateProgress();
-  }, 350);
+  }, 900);
 
-  /*
-    Keep navigation locked long enough
-    for the slow transition to finish.
-  */
-
+  // Don't allow another transition immediately
   setTimeout(() => {
     isAnimating = false;
-  }, 1900);
+  }, 3300);
 }
 
 buttons.forEach((button) => {
@@ -87,18 +75,17 @@ const starsContainer = document.getElementById("stars");
 function createStars() {
   if (!starsContainer) return;
 
-  for (let i = 0; i < 45; i++) {
+  for (let i = 0; i < 35; i++) {
     const star = document.createElement("div");
 
     star.className = "star";
 
     star.style.left = `${Math.random() * 100}%`;
-
     star.style.top = `${Math.random() * 100}%`;
 
-    star.style.animationDelay = `${Math.random() * 5}s`;
+    star.style.animationDelay = `${Math.random() * 8}s`;
 
-    star.style.animationDuration = `${4 + Math.random() * 4}s`;
+    star.style.animationDuration = `${7 + Math.random() * 7}s`;
 
     starsContainer.appendChild(star);
   }
@@ -123,115 +110,83 @@ function createFloatingHeart() {
 
   heart.style.left = `${Math.random() * 100}%`;
 
-  heart.style.fontSize = `${9 + Math.random() * 16}px`;
+  heart.style.fontSize = `${9 + Math.random() * 14}px`;
 
-  heart.style.animationDuration = `${9 + Math.random() * 7}s`;
+  heart.style.animationDuration = `${14 + Math.random() * 8}s`;
 
   heartsContainer.appendChild(heart);
 
   setTimeout(() => {
     heart.remove();
-  }, 18000);
+  }, 25000);
 }
 
-setInterval(createFloatingHeart, 1600);
+setInterval(createFloatingHeart, 2500);
 
 /* =========================
    HEART BURST
 ========================= */
 
-function createHeartBurst(x, y, amount = 15) {
+function createHeartBurst(x, y, amount = 8) {
   for (let i = 0; i < amount; i++) {
     const heart = document.createElement("div");
 
     heart.textContent = Math.random() > 0.35 ? "♥" : "♡";
 
     heart.style.position = "fixed";
-
     heart.style.left = `${x}px`;
-
     heart.style.top = `${y}px`;
 
     heart.style.zIndex = "9999";
-
     heart.style.pointerEvents = "none";
 
     heart.style.color = Math.random() > 0.5 ? "#ff86ac" : "#ffd1df";
 
-    heart.style.fontSize = `${12 + Math.random() * 18}px`;
+    heart.style.fontSize = `${11 + Math.random() * 14}px`;
 
-    heart.style.textShadow = `
-      0 0 8px #ff4f87,
-      0 0 20px rgba(255,60,130,.9)
-      `;
+    heart.style.textShadow = "0 0 15px rgba(255,60,130,.8)";
 
     document.body.appendChild(heart);
 
     const angle = Math.random() * Math.PI * 2;
 
-    const distance = 70 + Math.random() * 170;
+    const distance = 50 + Math.random() * 100;
 
     const xMove = Math.cos(angle) * distance;
 
     const yMove = Math.sin(angle) * distance;
 
-    const rotation = -60 + Math.random() * 120;
-
-    const animation = heart.animate(
+    heart.animate(
       [
         {
-          transform: "translate(-50%, -50%) scale(.2)",
-
+          transform: "translate(-50%, -50%) scale(.1)",
           opacity: 0,
         },
 
         {
-          transform: "translate(-50%, -50%) scale(1.2)",
-
-          opacity: 1,
-
-          offset: 0.2,
+          transform: "translate(-50%, -50%) scale(1)",
+          opacity: 0.9,
         },
 
         {
           transform: `translate(
-                calc(-50% + ${xMove}px),
-                calc(-50% + ${yMove}px)
-              )
-              rotate(${rotation}deg)
-              scale(.8)`,
-
-          opacity: 0.85,
-
-          offset: 0.7,
-        },
-
-        {
-          transform: `translate(
-                calc(-50% + ${xMove * 1.15}px),
-                calc(-50% + ${yMove * 1.15}px)
-              )
-              rotate(${rotation * 1.5}deg)
-              scale(.1)`,
-
+              calc(-50% + ${xMove}px),
+              calc(-50% + ${yMove}px)
+            )
+            rotate(20deg)
+            scale(.3)`,
           opacity: 0,
         },
       ],
-
       {
-        duration: 1500 + Math.random() * 900,
-
-        easing: "cubic-bezier(.16,1,.3,1)",
+        duration: 2800,
+        easing: "ease-out",
       },
     );
 
-    animation.finished
-      .then(() => {
-        heart.remove();
-      })
-      .catch(() => {
-        heart.remove();
-      });
+    setTimeout(() => {
+      heart.remove();
+    }, 3000);
   }
 }
 
@@ -272,7 +227,7 @@ if (birthdaySong && playButton) {
 }
 
 /* =========================
-   FINAL SCREEN
+   FINAL MOMENT
 ========================= */
 
 let finalTriggered = false;
@@ -283,8 +238,8 @@ function finalMoment() {
   finalTriggered = true;
 
   setTimeout(() => {
-    createHeartBurst(window.innerWidth / 2, window.innerHeight / 2, 40);
-  }, 1000);
+    createHeartBurst(window.innerWidth / 2, window.innerHeight / 2, 15);
+  }, 2500);
 }
 
 const observer = new MutationObserver(() => {
@@ -306,5 +261,3 @@ observer.observe(document.querySelector("main"), {
 ========================= */
 
 updateProgress();
-
-console.log("For Israa ♡ — Happy Birthday");
